@@ -138,7 +138,8 @@ AliOssAdapter.prototype.uploadFile = function (file, callback) {
 AliOssAdapter.prototype.getFileURL = function (file) {
 	// Consider providing an option to use insecure http. I can't think of any
 	// sensible use case for plain http though. https should be used everywhere.
-	return this._ossForFile(file).getObjectUrl(this._resolveFilename(file));
+	return 'https://' + this.options.bucket + '.' + this.options.region + '.aliyuncs.com' + this.options.path + '/' + file.filename;
+	//return this._ossForFile(file).getObjectUrl(this._resolveFilename(file));
 };
 
 AliOssAdapter.prototype.removeFile = function (file, callback) {
